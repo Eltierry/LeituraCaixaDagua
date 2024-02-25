@@ -103,14 +103,13 @@ void enviaValores()
 
 void enviaPacoteMqtt()
 {
-  static unsigned long delayEnvia;
-  if ((millis() - delayEnvia) > 2000)
+  if (resultado != emptyString)
   {
     int tamanho = resultado.length();
     char charBuf[tamanho];
     resultado.toCharArray(charBuf, tamanho);
-    boolean rc = MQTT.publish("Caixa01/", charBuf);
-    delayEnvia = millis();
+    boolean rc = MQTT.publish("Caixa02/", charBuf);
+    // delayEnvia = millis();
     Serial.println(resultado);
   }
 }
